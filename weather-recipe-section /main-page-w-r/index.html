@@ -12,14 +12,14 @@
         <div class="container">
             <div class="result-item">
                 <a href="/weather-recipe-section /recipe-section/index.html"><div class="item">Fresh Food Finder</div></a>
-
+                <a href="https://muhammadadil12.github.io/weather/"><div class="item">Weather Checker</div></a>
             </div>
         </div>
     </section>
 
     <div class="bottom-nav-div">
         <div class="iconDiv">
-            <a href="/home section/main-page-section/index.html"><span class="material-symbols-outlined" id="icons">home</span></a>
+            <a href="/index.html"><span class="material-symbols-outlined" id="icons">home</span></a>
         </div>
         <div class="iconDiv">
             <a href="/game-section/main-game-page/index.html"><span class="material-symbols-outlined" id="icons">smart_toy</span></a>
@@ -28,25 +28,27 @@
           <a href="/weather-recipe-section /main-page-w-r/index.html"><span class="material-symbols-outlined"id="icons"> weather_mix</span></a>
       </div>
         <div class="iconDiv">
-            <a href="/account-section/index.html"><span class="material-symbols-outlined icons" id="icons"> person</span></a>
+            <a href="/account-section/index.html"><a href="#" id="account-icon"><span class="material-symbols-outlined icons" id="icons"> person</span></a></a>
         </div>
         
     </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const isAuthenticated = localStorage.getItem("isLoggedIn");
-    const accountLink = document.getElementById("account-icon");
+      document.addEventListener("DOMContentLoaded", function () {
+        const isAuthenticated = localStorage.getItem("isLoggedIn");
+        const accountLink = document.getElementById("account-icon");
 
-    if (isAuthenticated === 'true') {
-        // User is logged in, show the account page
-        accountLink.href = "/account-section/main-account-section/index.html";
-    } else {
-        // User is not logged in, show the make an account page
-        accountLink.href = "/account-section/index.html";
-    }
-    });
-</script>
+        if (isAuthenticated === 'true') {
+            // User is logged in, show the account page
+            accountLink.href = "/account-section/main-account-section/index.html";
+        } else {
+            // User is not logged in, show the make an account page
+            accountLink.href = "/account-section/index.html";
+        }
+        });
+
+    </script>
+
       
 </body>
 </html>
