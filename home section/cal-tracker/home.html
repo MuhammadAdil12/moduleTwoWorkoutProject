@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+    <title>Home Section</title>
+</head>
+<body>
+  <section>
+      <div id="parent-div">
+
+        <div class="container">
+          <header>
+            <h1>Calories Tracker</h1>
+            <div id="clock"></div>
+          </header>
+          <form id="item-form">
+            <div class="form-control">
+                <input
+                  type="text"
+                  class="form-input"
+                  id="food-input"
+                  placeholder="Food Name"
+                />
+                <input
+                  type="text"
+                  class="form-input"
+                  id="cal-input"
+                  placeholder="Calories"
+                />
+                <input
+                type="text"
+                class="form-input"
+                id="price-input"
+                placeholder="Price"
+                />
+            </div>
+
+            <div class="form-control">
+              <button class="btn">
+                <i class="fa-solid fa-plus"></i> Add Food Items
+              </button>
+            </div>
+          </form>
+    
+          <div class="filter">
+            <input
+              type="text"
+              class="form-input-filter"
+              id="filter"
+              placeholder="Filter Items"
+            />
+          </div>
+    
+          <ul id="item-list" class="items">
+          <!-- code that will be add by javascript -->
+
+          </ul>
+          <div class="total-div">
+              <button id="total" class="btn-total">Total:</button>
+              <button id="totalPrice" class="btn-total-price">Total Price:</button>
+          </div>
+
+          <button id="clear" class="btn-clear">Clear All</button>
+      </div>
+  </section>
+
+  
+      
+          
+          
+
+      
+
+
+
+    
+
+
+        <!-- Icon's div -->
+        <div class="bottom-nav-div">
+            <div class="iconDiv">
+                <a href="/home section/main-page-section/index.html"><span class="material-symbols-outlined" id="icons">home</span></a>
+            </div>
+            <div class="iconDiv">
+                <a href="/game-section/main-game-page/index.html"><span class="material-symbols-outlined" id="icons">smart_toy</span></a>
+            </div>
+            <div class="iconDiv">
+              <a href="/weather-recipe-section /main-page-w-r/index.html"><span class="material-symbols-outlined"id="icons"> weather_mix</span></a>
+            </div>
+            <div class="iconDiv">
+              <a href="/account-section/main-account-section/index.html"><a href="#" id="account-icon"><span class="material-symbols-outlined icons" id="icons"> person</span></a></a>
+            </div>
+            
+        </div>
+
+        
+        <script src="script.js"></script>
+</body>
+</html>
