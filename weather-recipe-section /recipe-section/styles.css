@@ -188,6 +188,15 @@ a {
     }
    
 }
+
+@media only screen and (max-width: 500px) {
+    #icons{
+        font-size: 24px;
+    
+    }
+  
+  }
+  
 @media (max-width: 380px) {
     #user-input{
         width: 85%;

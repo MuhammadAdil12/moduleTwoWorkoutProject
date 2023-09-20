@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
     integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
-  />
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <title>Home Section</title>
 </head>
@@ -33,16 +33,34 @@
                   placeholder="Food Name"
                 />
                 <input
-                  type="text"
+                  type="number"
                   class="form-input"
                   id="cal-input"
                   placeholder="Calories"
                 />
                 <input
-                type="text"
+                type="number"
                 class="form-input"
                 id="price-input"
                 placeholder="Price"
+                />
+                <input
+                type="number"
+                class="form-input"
+                id="fat-input"
+                placeholder="Fat Calories"
+                />
+                <input
+                type="number"
+                class="form-input"
+                id="carbs-input"
+                placeholder="Carbs Calories"
+                />
+                <input
+                type="number"
+                class="form-input"
+                id="protein-input"
+                placeholder="Protein Calories"
                 />
             </div>
 
@@ -70,9 +88,18 @@
               <button id="total" class="btn-total">Total:</button>
               <button id="totalPrice" class="btn-total-price">Total Price:</button>
           </div>
+          <div class="sec-total-div">
+            <button id="total-fat" class="btn-total">Total:</button>
+            <button id="total-carbs" class="btn-total-price">Total Price:</button>
+            <button id="total-protein" class="btn-total-price">Total Price:</button>
+        </div>
 
           <button id="clear" class="btn-clear">Clear All</button>
       </div>
+      <div class="phoneDiv">
+        <p>This part of application is not available for phone size. Try Using a Laptop ˆ∆ˆ</p>
+    </div>
+      
   </section>
 
   

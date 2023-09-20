@@ -7,21 +7,31 @@ const clearBtn = document.querySelector("#clear")
 const clock = document.getElementById("clock")
 const filterItem = document.querySelector("#filter")
 const totalDiv = document.querySelector(".total-div")
+const secTotalDiv = document.querySelector(".sec-total-div")
+const fatInput = document.querySelector("#fat-input")
+const carbsInput = document.querySelector("#carbs-input")
+const proteinInput = document.querySelector("#protein-input")
+
+
+
+
+
+
 
 setInterval(function(){
     let date = new Date()
     clock.innerHTML = date.toLocaleTimeString();
 }, 1000)
 
+
+//! display item from storage that are saved
+
 function displayItemFromStorage(){
 
-    let itemsFromStorage = getCalInputFromStorage()
-    let _itemsFromStorage = getFoodInputFromStorage()
-    let _priceInputFromStorage = getPriceInputFromStorage()
-
-    for(let i = 0; i < itemsFromStorage.length; i++){
-        addFoodListToTheDom(_itemsFromStorage[i], itemsFromStorage[i], _priceInputFromStorage[i])
-    }
+    let list = JSON.parse(localStorage.getItem("list")) || [];
+    list.forEach(item => {
+        addFoodListToTheDom(item.name, item.calorie, item.price, item.fat, item.carbs, item.protein)
+    })
     checkLis()
 }
 
@@ -31,18 +41,23 @@ function addFood(e){
     let _foodInput = foodInput.value
     let _calInput = calInput.value
     let _priceInput = priceInput.value
+    let _fatInput = fatInput.value
+    let _carbsInput = carbsInput.value
+    let _proteinInput = proteinInput.value
 
-    if(_foodInput === "" || _calInput === "" || _priceInput === ""){
+    if(_foodInput === "" || _calInput === "" || _priceInput === "" || _fatInput === "" || _carbsInput === "" || _proteinInput === ""){
         alert("Please Entry The Item")
     }else{
 
-    addFoodListToTheDom(_foodInput, _calInput, _priceInput)
-    addFoodToStorage(_foodInput, _calInput, _priceInput)
+    addFoodListToTheDom(_foodInput, _calInput, _priceInput, _fatInput, _carbsInput, _proteinInput)
+    addFoodToStorage(_foodInput, _calInput, _priceInput, _fatInput, _carbsInput, _proteinInput)
     checkLis()
     }
 }    
 
-function addFoodListToTheDom(_foodInput, _calInput, _priceInput){
+//! adding item to the Dom
+
+function addFoodListToTheDom(_foodInput, _calInput, _priceInput, _fatInput, _carbsInput, _proteinInput){
 
     if(_foodInput === "" || _calInput === ""){
         alert("Please Entry The Item")
@@ -72,10 +87,28 @@ function addFoodListToTheDom(_foodInput, _calInput, _priceInput){
     button4.className = "remove-item btn-link"
     const text4 = document.createTextNode(_priceInput + " $")
     button4.appendChild(text4)
+
+    let button5 = document.createElement("button")
+    button5.className = "remove-item btn-link"
+    const text5 = document.createTextNode(_fatInput + " Fat")
+    button5.appendChild(text5)
+
+    let button6 = document.createElement("button")
+    button6.className = "remove-item btn-link"
+    const text6 = document.createTextNode(_carbsInput + " Carbs")
+    button6.appendChild(text6)
+
+    let button7 = document.createElement("button")
+    button7.className = "remove-item btn-link"
+    const text7 = document.createTextNode(_proteinInput + " Protein")
+    button7.appendChild(text7)
     
     li.appendChild(p)
     li.appendChild(button2)
     li.appendChild(button4)
+    li.appendChild(button5)
+    li.appendChild(button6)
+    li.appendChild(button7)
 
 
 
@@ -93,81 +126,57 @@ function addFoodListToTheDom(_foodInput, _calInput, _priceInput){
     
 }
 
+//! checking the list from the Dom
 function checkLis(){
     
     foodInput.value = "";
     calInput.value = "";
     priceInput.value = ""
+    fatInput.value = ""
+    carbsInput.value = ""
+    proteinInput.value = ""
     
     const liList = document.querySelectorAll("li")
     if(liList.length === 0){
         clearBtn.style.display = "none"
         filter.style.display = "none"
         totalDiv.style.display = "none"
+        secTotalDiv.style.display = "none"
     }else{
         clearBtn.style.display = "block"
         filter.style.display = "block"
         totalDiv.style.display = "flex"
+        secTotalDiv.style.display = "flex"
+
     }
     
-    _addFoodBtn.innerHTML = "<i class='fa-solid fa-plus'></i> \xa0\ Add Lists";
-    
-    calCalculator()
-    priceCalculator()
+    totalCalculator()
     
 }
 
 // //! adding all the information to the local Storage input by the user
-function addFoodToStorage(value1, value2, value3){
-    
-    let foodInputFromStorage = getFoodInputFromStorage() 
-    let calInputFromStorage = getCalInputFromStorage() 
-    let priceInputFromStorage = getPriceInputFromStorage()
-    
-    //adding newItem to the itemsFromStorage array
-    foodInputFromStorage.push(value1);
-    calInputFromStorage.push(value2);
-    priceInputFromStorage.push(value3);
-    
-    //set newItem to the local storage
-    localStorage.setItem("item", JSON.stringify(foodInputFromStorage));
-    localStorage.setItem("item1", JSON.stringify(calInputFromStorage));
-    localStorage.setItem("item2", JSON.stringify(priceInputFromStorage));
-    
-}
+function addFoodToStorage(value1, value2, value3, value4, value5, value6){
 
-// //!  getting food Input From Storage
-function getFoodInputFromStorage() {
-    
-    if(localStorage.getItem("item" ) === null){
-        itemsFromStorage = [];
-    }else{
-        itemsFromStorage = JSON.parse(localStorage.getItem("item"))
+    let x = []
+
+    x = JSON.parse(localStorage.getItem("list") || "[]");
+
+
+    z = {
+        name: value1,
+        calorie: value2,
+        price: value3,
+        fat: value4,
+        carbs: value5,
+        protein: value6
     }
-    return itemsFromStorage
+
+    x.push(z)
+
+    localStorage.setItem("list", JSON.stringify(x))   
 }
 
-function getCalInputFromStorage() {
-    
-    if(localStorage.getItem("item1" ) === null){
-        itemsFromStorage = [];
-    }else{
-        itemsFromStorage = JSON.parse(localStorage.getItem("item1"))
-    }
-    return itemsFromStorage
-}
-
-function getPriceInputFromStorage() {
-    
-    if(localStorage.getItem("item2" ) === null){
-        itemsFromStorage = [];
-    }else{
-        itemsFromStorage = JSON.parse(localStorage.getItem("item2"))
-    }
-    return itemsFromStorage
-}
-
-// ! removing food list from the dom
+// ! removing list from the dom
 
 function removeFoodListFromTheDom(e){
 
@@ -176,98 +185,118 @@ function removeFoodListFromTheDom(e){
     }
 }
 
-function removeItem(item){
-    
-    if(confirm("Are you Sure?")){
+function removeItem(item) {
+    if (confirm("Are you Sure?")) {
         item.remove();
-        calCalculator()
+        totalCalculator();
+        
+        const foodText = item.children[0].textContent;
+        const calText = item.children[1].textContent;
+        const priceText = item.children[2].textContent;
+        const fatText = item.children[3].textContent;
+        const carbsText = item.children[4].textContent;
+        const proteinText = item.children[5].textContent;
 
-        removeFoodInputFromStorage(item.children[0].textContent)
-        removeCalInputFromStorage(item.children[1].textContent)
-        removePriceInputFromStorage(item.children[2].textContent)
-
-        checkLis()
+        removeItemFromStorage(foodText, calText, priceText, fatText, carbsText, proteinText);
+        
+        checkLis();
     }
 }
 
-// ! removing food Input From Storage
-function removeFoodInputFromStorage(item){
+// ! removing list item From Storage
+function removeItemFromStorage(item, item1, item2, item3, item4, item5){
     let _item = item.toLowerCase()
-    
-    let _foodInputFromStorage = getFoodInputFromStorage()
-    let foodInputFromStorage = _foodInputFromStorage.filter((i) => i !== _item)
-   localStorage.setItem("item", JSON.stringify(foodInputFromStorage))
+    let _item1 = item1.toLowerCase()
+    let _item2 = item2.toLowerCase()
+    let _item3 = item3.toLowerCase()
+    let _item4 = item4.toLowerCase()
+    let _item5 = item5.toLowerCase()
+
+
+    let _list = JSON.parse(localStorage.getItem("list")) || [];
+    let list = _list.filter((item) => item.name !== _item &&
+                                        item.calorie !== _item1 &&
+                                        item.price !== _item2 && 
+                                        item.fat !== _item3 &&
+                                        item.carbs !== _item4 && 
+                                        item.protein !== _item5)
+
+    console.log(list);
+    localStorage.setItem("list", JSON.stringify(list))
 
 }
 
-// ! removing calories Input From Storage
-function removeCalInputFromStorage(item){
-
-    let _item = item.slice(0, -4)
-     
-    let _calInputFromStorage =  getCalInputFromStorage() 
-    let calInputFromStorage = _calInputFromStorage.filter((i) => i !== _item)
-    localStorage.setItem("item1", JSON.stringify(calInputFromStorage))
-    calCalculator()
-    priceCalculator()
-
-}
-
-// ! removing price Input From Storage
-function removePriceInputFromStorage(item){
-
-    let _priceInputFromStorage =  getPriceInputFromStorage() 
-    let priceInputFromStorage = _priceInputFromStorage.filter((i) => i !== item[0])
-    localStorage.setItem("item2", JSON.stringify(priceInputFromStorage))
-    calCalculator()
-    priceCalculator()
-
-}
-
+//! clears All item from everywhere, storage / dom
 function clearItem (){
     while(itemList.firstChild){
         itemList.firstChild.remove()
     }
 
     if(confirm("Are you Sure?")){
-        localStorage.removeItem("item")
-        localStorage.removeItem("item1")
-        localStorage.removeItem("item2")
+        localStorage.removeItem("list")
         checkLis()
     }
 }
 
-function calCalculator(){
 
-    let _calInputFromStorage =  getCalInputFromStorage() 
-    let total = 0;
+//! calculating the total of totalPrice /totalFat /totalCarbs /totalProtein /totalCalories
+function totalCalculator(){
 
-   for(let i = 0; i < _calInputFromStorage.length; i++) {
-        total += +_calInputFromStorage[i];
+    let calories = [];
+    let price = [];
+    let fat = [];
+    let carbs = [];
+    let protein = [];
+    
+    let _totalCalories = 0;
+    let _totalPrice = 0;
+    let _totalFat = 0;
+    let _totalCarbs = 0;
+    let _totalProtein = 0;
+
+
+
+    let list = JSON.parse(localStorage.getItem("list") || "[]");
+
+    list.forEach((_list) => {
+        calories.push(_list.calorie)
+        price.push(_list.price)
+        fat.push(_list.fat)
+        carbs.push(_list.carbs)
+        protein.push(_list.protein)
+    }) 
+
+
+   for(let i = 0; i < price.length; i++) {
+        _totalCalories += parseInt(calories[i]);
+       _totalPrice +=  parseInt(price[i]);
+       _totalFat +=  parseInt(fat[i]);
+        _totalCarbs +=  parseInt(carbs[i]);
+        _totalProtein +=  parseInt(protein[i]);
+
    }
-   document.getElementById("total").textContent =  `Total Calories: ` + total ;
-   localStorage.setItem("total", JSON.stringify(total))
-   
-   return total;
 
+   document.getElementById("total").textContent =  `Total Calories: ` + _totalCalories ;
+
+   document.getElementById("totalPrice").textContent =  `Total Price: ` + _totalPrice + " $";
+
+   document.getElementById("total-fat").textContent =  `Total Fat: ` + _totalFat;
+
+   document.getElementById("total-carbs").textContent =  `Total Carbs: ` + _totalCarbs;
+
+   document.getElementById("total-protein").textContent =  `Total Protein: ` + _totalProtein;
+
+    totalAmount = {
+        totalCalories: _totalCalories,
+        totalPrice: _totalPrice,
+        totalFat: _totalFat,
+        totalCarbs: _totalCarbs,
+        totalProtein: _totalProtein  
+    }
+
+    localStorage.setItem("totalAmount", JSON.stringify(totalAmount)) 
 }
 
-function priceCalculator(){
-
-    let _priceInputFromStorage =  getPriceInputFromStorage() 
-    let totalPrice = 0;
-
-   for(let i = 0; i < _priceInputFromStorage.length; i++) {
-        totalPrice += +_priceInputFromStorage[i];
-   }
-   document.getElementById("totalPrice").textContent =  `Total Price: ` + totalPrice + " $";
-   localStorage.setItem("totalPrice", JSON.stringify(totalPrice))
-   
-   console.log(totalPrice);
-   return totalPrice;
-
-}
-priceCalculator()
 
 function filterLis(e){
 

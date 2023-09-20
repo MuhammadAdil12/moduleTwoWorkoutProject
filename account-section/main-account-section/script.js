@@ -65,26 +65,24 @@ function updateProfilePicture(input) {
 
 // ! Getting the calories from local storage and displaying
 document.addEventListener('DOMContentLoaded', function () {
-    const total = localStorage.getItem('total');
+    let total = JSON.parse(localStorage.getItem('totalAmount') || "0");
+    let totalCalories = total.totalCalories
     const bmi = JSON.parse(localStorage.getItem('bmi'));
     const bmr = JSON.parse(localStorage.getItem('bmr'));
-    const macroRatio = JSON.parse(localStorage.getItem('macroRatio'));
     const tdee = JSON.parse(localStorage.getItem('tdee'))
 
     const totalCaloriesLi = document.querySelector('.total-calories-intake');
     const bmiLi = document.querySelector('.bmi');
     const bmrLi = document.querySelector('.basal-metabolic-rate');
-    const macroRatioLi = document.querySelector('.macro-ratio');
     const tdeeLi = document.querySelector('.tdee')
 
 
     
-    if (total == 0  || bmi !== "" || bmr !== "" || macroRatio !== "" || tdee !== "" ) {
+    if (totalCalories == 0  || bmi !== "" || bmr !== "" || macroRatio !== "" || tdee !== "" ) {
 
-        totalCaloriesLi.textContent = `Total Calories Intake: ${total}`;
+        totalCaloriesLi.textContent = `Total Calories Intake: ${totalCalories}`;
         bmrLi.textContent = bmr; 
         bmiLi.textContent = bmi;
-        macroRatioLi.textContent = macroRatio;
         tdeeLi.textContent = tdee
 
     } else {
@@ -160,16 +158,16 @@ currentWeekStart.setDate(today.getDate() - currentDayOfWeek);
 
 // Create labels for the entire week
 const labels = [];
+// starting data array with zeros
+const dataValues = Array(7).fill(0);
+
 for (let i = 0; i < 7; i++) {
   const date = new Date(currentWeekStart);
   date.setDate(currentWeekStart.getDate() + i);
   labels.push(dayNames[date.getDay()]);
+  dataValues[i] = localStorage.getItem(dayNames[date.getDay()]) || 0;
 }
 
-// starting data array with zeros
-const dataValues = Array(7).fill();
-// Set the data value for the current day
-dataValues[currentDayOfWeek] = localStorage.getItem('total') || 0;
 
 // Setup data
 const data = {
@@ -215,30 +213,150 @@ const config = {
 
 // Render init block
 const myChart = new Chart(document.getElementById('myChart'), config);
-let savedData = JSON.parse(localStorage.getItem('total')) || {};
+const now = new Date();
+const midnight = new Date();
+midnight.setHours(0, 0, 0, 0);
 
-function checkMidnight() {
-    const now = new Date();
-    if (now.getHours() === 0 && now.getMinutes() === 0 && now.getSeconds() === 0) {
-      // It's midnight; save the data for the next day
-      currentDayOfWeek = (currentDayOfWeek + 1) % 7;
-      
-      // Save the current day's data in local storage with the day name as the key
-      savedData[labels[currentDayOfWeek]] = dataValues[currentDayOfWeek];
-      localStorage.setItem('total', JSON.stringify(savedData));
-  
-      // Reset data for the next day
-      dataValues[currentDayOfWeek] = 0;
-      myChart.update();
-  
-      const previousDayIndex = (currentDayOfWeek + 6) % 7; // Getting index of the previous day
-      if (savedData[labels[previousDayIndex]]) {
-        dataValues[previousDayIndex] = savedData[labels[previousDayIndex]];
-        myChart.update();
-      }
-    }
+if (now >= midnight && !localStorage.getItem('resetFlag')) {
+    localStorage.setItem('total', '0');
+    localStorage.setItem('resetFlag', 'true');
+    dataValues[currentDayOfWeek] = 0;
+    myChart.update();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    let _list = JSON.parse(localStorage.getItem('totalAmount') || "0");
+    let totalCalories = _list.totalCalories
+
+    if (!isNaN(totalCalories)) {
+        localStorage.setItem(labels[currentDayOfWeek], totalCalories);
+
+        dataValues[currentDayOfWeek] = Number(totalCalories);
+        myChart.update();
+    }else {
+        console.log("Total Calories data not found in local storage.");
+    }
+
+});
+
+
+
+
+// ! Setup data for the total price chart
+const priceLabels = labels; // Use the same labels as the total calories chart
+const priceDataValues = Array(7).fill(0);
+for (let i = 0; i < 7; i++) {
+  priceDataValues[i] = localStorage.getItem(dayNames[i] + 'price') || 0;
+}
+
+// Setup data for the total price chart
+const priceData = {
+  labels: priceLabels,
+  datasets: [{
+    label: 'Total Price',
+    data: priceDataValues,
+    backgroundColor: [
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 26, 104, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(0, 0, 0, 0.2)',
+    ],
+    borderColor: [
+      'rgba(153, 102, 255, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 159, 64, 1)',
+      'rgba(255, 26, 104, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(0, 0, 0, 1)',
+    ],
+    borderWidth: 1,
+  }],
+};
+
+// Config for the total price chart
+const priceConfig = {
+  type: 'bar',
+  data: priceData,
+  options: {
+    indexAxis: 'y',
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  },
+};
+
+// Create the total price chart
+const priceChart = new Chart(document.getElementById('secondChart'), priceConfig);
+
+  const now1 = new Date();
+  const midnight1 = new Date();
+  midnight1.setHours(0, 0, 0, 0);
   
+  if (now1 >= midnight1 && !localStorage.getItem('resetFlag')) {
+    localStorage.setItem('totalPrice', '0');
+    localStorage.setItem('resetFlag', 'true');
+    dataValues[currentDayOfWeek] = 0;
+    priceChart.update(); 
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    let _list = JSON.parse(localStorage.getItem('totalAmount') || '0');
+    let _totalPrice = _list.totalPrice;
+  
+    if (!isNaN(_totalPrice)) {
+      // Set the new value in local storage
+      localStorage.setItem(dayNames[currentDayOfWeek] + 'price', _totalPrice);
+  
+      // Update the chart with the new data
+      priceDataValues[currentDayOfWeek] = Number(_totalPrice);
+      priceChart.data.datasets[0].data = priceDataValues;
+      priceChart.update();
+    } else {
+      console.log("Total Price data not found in local storage.");
+    }
+  });
 
 
 
+
+
+  //! function for displaying progress of macro ratio
+  const macroRatioFats = document.querySelector('.macro-ratio-fat');
+  const macroRatioCarbs = document.querySelector('.macro-ratio-carbs');
+  const macroRatioProtein = document.querySelector('.macro-ratio-protein');
+
+
+  // Calculate the percentage of macro intake and display it
+function displayMacroIntake() {
+  let macroRatioIntake = JSON.parse(localStorage.getItem('totalAmount') || "0");
+  let fatRatio = macroRatioIntake.totalFat;
+  let carbsRatio = macroRatioIntake.totalCarbs;
+  let proteinRatio = macroRatioIntake.totalProtein;
+
+
+  let macroRatio = JSON.parse(localStorage.getItem('macroRatio') || "0")
+
+  let fatIntake = macroRatio.fats
+  let carbsIntake = macroRatio.carbs
+  let proteinIntake = macroRatio.protein
+  
+  if (!isNaN(fatRatio) && !isNaN(fatIntake)) {
+
+    // Calculate the percentage of macro intake
+    macroRatioFats.innerHTML = `Fats: ${fatRatio} / ${Math.round(fatIntake)}`
+    macroRatioCarbs.innerHTML = `Carbs: ${carbsRatio} / ${Math.round(carbsIntake)}`
+    macroRatioProtein.innerHTML = `Protein: ${proteinRatio} / ${Math.round(proteinIntake)}`
+  } 
+    else {
+    macroRatioFats.innerHTML = "There is nothing to show"
+  }
+
+}
+
+displayMacroIntake();

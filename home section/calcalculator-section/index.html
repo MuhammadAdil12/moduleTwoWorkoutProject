@@ -45,27 +45,46 @@
                     <!-- <input type="number" id="activityLevelCaloriesChild" placeholder="1 / 6" required> -->
                 </div>
             </form>
-                <div id="gen-pt">
+                <!-- <div id="gen-pt">
+                    <p id="result"></p>
+                    <button class="caloriesBtn" id="submitBtnCalories"> Generate Calories </button>
+                </div> -->
+                <div id="macroRatio">
+                    <p id="macroRatio-p">Please Enter your Macro Ratio</p>
+                </div>
+                <form class="input-parent">
+                    <div class="input-group">
+                        <input type="text" required id="fat-input" class="input" placeholder="Fats %">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" required id="carbsInput" class="input" placeholder="Carbs %">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" required id="protienInput" class="input"  placeholder="Protein %">
+                    </div>
+                </form>
+                <div id="gen-pt-2">
                     <p id="result"></p>
                     <button class="caloriesBtn" id="submitBtnCalories"> Generate Calories </button>
                 </div>
+                
         </div>
         
             <!-- second div that displays the results -->
         <div class="second-div">
-            <div class="parent-div">
+            <div class="parent-div-2">
                 <p class="second-div-p-tag" id="bmr-area">BMR:</p>
                 <p class="second-div-p-tag" id="bmi-area">BMI:</p>
             </div>
-            <div class="parent-div">
+            <div class="parent-div-2">
                 <p class="second-div-p-tag" id="weight-gain">Weight Gain:</p>
                 <p class="second-div-p-tag" id="weight-loss">Weight Loss:</p>
             </div>
-            <div class="parent-div">
+            <div class="parent-div-2">
                 <p class="second-div-p-tag" id="waterIntakeResult">Daily water intake:</p>
                 <p class="second-div-p-tag" id="macro-ratio" >Macro Ratio: </p>
             </div>
-            <div class="parent-div">
+            <div class="parent-div-2">
                 <p class="second-div-p-tag" id="cal-tdee" >TDEE:</p>
               <div class="parent-div-Btn"><button class="saveBtn">Save</button></div>
             </div>

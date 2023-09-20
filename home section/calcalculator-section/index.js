@@ -4,6 +4,9 @@ const _gender = document.querySelector("#genderCaloriesChild")
 const _height = document.querySelector("#heightCaloriesChild")
 const _weight = document.querySelector("#weightCaloriesChild")
 const _activityLevel = document.querySelector("#activityLevelCaloriesChild")
+const _inputFatPercentage = document.getElementById("fat-input")
+const _carbsInputPercentage = document.getElementById("carbsInput")
+const _proteinInputPercentage = document.getElementById("protienInput")
 
 
 
@@ -30,7 +33,7 @@ function genderBmr(){
             weightGain(_femaleBmr)
             weightLoss(_femaleBmr)
             let _tdeeFemale = calTdeeForFemale()
-            macroNutrientFemale(_tdeeFemale)
+            macroNutrient(_tdeeFemale)
   
         }
 
@@ -167,27 +170,35 @@ function calculateWaterIntake() {
         waterIntakeResult.textContent = "Rec daily water intake: " + waterIntake + " ml";
 }
 
-function macroNutrient(value) {
+function macroNutrient(value1) {
    // Calculate fat, carbs, and protein as percentages of maleBmr
 
-  let fats = 0.25 * value;   
-  let carbs = 0.40 * value;
-  let protein = 0.35 * value; 
-    
-  document.getElementById("macro-ratio").textContent = " Fat: " + Math.round(fats) + " Carbs: " + Math.round(carbs) + ' Protein: ' + Math.round(protein);
-  
+   let inputFatPercentage = _inputFatPercentage.value
+   let carbsInputPercentage = _carbsInputPercentage.value
+   let proteinInputPercentage = _proteinInputPercentage.value
+
+   if(parseInt(inputFatPercentage) + parseInt(carbsInputPercentage) + parseInt(proteinInputPercentage) === 100){
+
+       let fats = inputFatPercentage/100 * value1;   
+       let carbs = carbsInputPercentage/100 * value1;
+       let protein = proteinInputPercentage/100 * value1; 
+         
+       document.getElementById("macro-ratio").textContent = " Fat: " + Math.round(fats) + " Carbs: " + Math.round(carbs) + ' Protein: ' + Math.round(protein);
+
+       _macroRatio = {
+        fats: fats,
+        carbs: carbs,
+        protein: protein
+    }
+
+    localStorage.setItem("macroRatio", JSON.stringify(_macroRatio))
+
+   }else{
+    alert('Please Make Sure Your Macro Ratio Ends Up 100% ˆ∆ˆ')
+   }
+
   }
 
-  function macroNutrientFemale(value) {
-    // Calculate fat, carbs, and protein as percentages of maleBmr
-    
-   let fat = 0.25 * value;   
-   let carbs = 0.45 * value;
-   let protein = 0.30 * value; 
-   
-   document.getElementById("macro-ratio").textContent = "Fat: " + Math.round(fat,) + ", Carbs: " + Math.round(carbs,) + ", Protein: " + Math.round(protein,);
-
-   }
 
 function onSave(){
        
@@ -198,12 +209,11 @@ function onSave(){
        let bmr = document.querySelector('#bmr-area')
        let bmi = document.querySelector('#bmi-area')
        let tdee = document.querySelector('#cal-tdee')
-       let macroRatio = document.querySelector('#macro-ratio')
    
        localStorage.setItem("bmr", JSON.stringify(bmr.textContent))
        localStorage.setItem("bmi", JSON.stringify(bmi.textContent))
        localStorage.setItem("tdee", JSON.stringify(tdee.textContent))
-       localStorage.setItem("macroRatio", JSON.stringify(macroRatio.textContent))
+
     }
 }
 

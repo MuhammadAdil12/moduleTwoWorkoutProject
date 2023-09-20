@@ -36,17 +36,33 @@
                 <li class="tdee"></li>
                 <li class="total-calories-intake"></li>
                 <li class="basal-metabolic-rate"></li>
-                <li class="macro-ratio"></li>
                 <li class="bmi"></li>
             </ul>
         </div>
 
-        <div class="right-Side-Div-for-settings-section">
-            <div class="chartCard">
-                <div class="chartBox">
-                  <canvas id="myChart" class="canvas-chart"></canvas>
+            <div class="right-Side-Div-for-settings-section">
+                <div class="chartCard">
+                    <div class="chartBox">
+                    <canvas id="myChart" class="canvas-chart"></canvas>
+                    </div>
                 </div>
-              </div>
+            </div>
+
+            <div class="parent-div-saved-items-from-calculater">
+                <ul class="macro-ratio">
+                    <h4>Daily Macro Ratio Progress</h4>
+                    <li class="macro-ratio-fat"></li>
+                    <li class="macro-ratio-carbs"></li>
+                    <li class="macro-ratio-protein"></li>
+                </ul>
+            </div>
+
+            <div class="second-graph-for-price">
+                <div class="chartCard">
+                    <div class="chartBox">
+                      <canvas id="secondChart" class="chart-price"></canvas>
+                    </div>
+                  </div>
             </div>
             
         <div class="settings-section">
@@ -93,5 +109,6 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
+    
 </body>
 </html>
