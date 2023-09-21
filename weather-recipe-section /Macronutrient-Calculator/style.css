@@ -1,0 +1,116 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+section {
+    min-height: 100vh;
+    width: 100%;
+    background:linear-gradient(180deg, #435fecd5, #c4b8b8);  
+}
+.resultDiv {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 100px;
+}
+.firstDiv {
+    width: 55%;
+    max-height: 110px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+}
+.secondDiv{
+    width: 40%;
+    height: 650px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+}
+.resultList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 9px 15px;
+    font-weight: 600;
+    border-bottom: 1px black dotted;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+.form-label, .loading{
+    text-align: center;
+    font-size: 19px;
+}
+.loading-parent {
+    width: 100%;
+    text-align: center;
+}
+#recipe {
+    margin-top: 50px;
+}
+.results {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 9px 20px;
+    text-align: center;
+}
+.results li {
+    padding-right: 5px;
+}
+.li-tag{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sec-div-ul{
+    margin: 0;
+    padding: 20px;
+}
+.bottom-nav-div{
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d8d2d2;
+
+}
+#icons{
+    font-size: 34px;
+    color: #171717;
+}
+@media only screen and (max-width: 500px) {
+    #icons{
+        font-size: 24px;
+    
+    }
+  
+}
+@media only screen and (max-width: 940px) {
+
+    .firstDiv {
+        width: 100%;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        margin-bottom: 50px;
+    }
+    .resultDiv{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; 
+        padding-bottom: 100px;
+    }
+
+    .secondDiv{
+        width: 75%;
+        height: 650px;
+        background-color: whiteSmoke;
+        border-radius: 15px;
+    }
+
+}

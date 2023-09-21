@@ -1,285 +1,271 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 100%;
-    height: 160vh;
-    background: linear-gradient(to bottom, rgb(225, 223, 246), #ffffff);
+  width: 100%;
+  height: 160vh;
+  background: linear-gradient(to bottom, rgb(225, 223, 246), #ffffff);
 }
 
 .top-div {
-    height: 18%;
-    background: linear-gradient(to bottom, #435fece8, #e5e8fc); 
-    position: relative;
-    z-index: 2;
+  height: 18%;
+  background: linear-gradient(to bottom, #435fece8, #e5e8fc);
+  position: relative;
+  z-index: 2;
 }
 
 .profile-container {
-    position: absolute;
-    top: 13%; 
-    left: 0;
-    transform: translateY(-50%); 
-    width: 100%;
-    height: 15%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-    padding: 0 40px;
-    box-sizing: border-box;
-    z-index: 3;
+  position: absolute;
+  top: 13%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 0 40px;
+  box-sizing: border-box;
+  z-index: 3;
 }
 
 .profile-pic-div {
-    width: 120px; 
-    height: 120px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #d5d0d0;
-    border-radius: 50%; 
-    box-shadow: 0 0 30px rgba(38, 167, 253, 0.463);
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d5d0d0;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(38, 167, 253, 0.463);
 }
 
-
 .user-name {
-    font-size: 26px;
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: black;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: black;
 }
 
 .camera-icon {
-    cursor: pointer;
-    color: white;
-    margin-bottom: 13px;
-    font-size: 24px; /* Adjust the font size as needed */
+  cursor: pointer;
+  color: white;
+  margin-bottom: 13px;
+  font-size: 24px; /* Adjust the font size as needed */
 }
 
 .camera-icon:active {
-    transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .camera-div {
-    height: 120px;
-    width: 120px;
-    display: flex;
-    border-radius: 49%;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: rgba(124, 124, 124, 0.242); 
+  height: 120px;
+  width: 120px;
+  display: flex;
+  border-radius: 49%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-color: rgba(124, 124, 124, 0.242);
 }
 
 .toast {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #2868a7; 
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    z-index: 9;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2868a7;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  z-index: 9;
 }
 
 .toast-header {
-    background-color: rgba(255, 255, 255, 0.2); 
-    color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .toast-body {
-    padding: 10px;
+  padding: 10px;
 }
 /* ''''calculator'''' */
 .parent-div-saved-items-from-calculater {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 50%;
-    width: 40%;
-    border-right: .5vh solid black;
-    border-radius: 10px;
-    
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50%;
+  width: 40%;
+  border-right: 0.5vh solid black;
+  border-radius: 10px;
 }
 .parent-div-saved-items-from-calculater ul {
-    text-align: center;
-    padding: 10px;
-    list-style: none;
+  text-align: center;
+  padding: 10px;
+  list-style: none;
 }
 .parent-div-saved-items-from-calculater ul li {
-    line-height: 40px;
+  line-height: 40px;
 }
 .parent-div-saved-items-from-calculater .macro-ratio {
-    font-size: 19px;
+  font-size: 19px;
 }
 .right-Side-Div-for-settings-section {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 40px;
-    align-items: center;
-    height: 50%;
-    width: 60%;
-    border-radius: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 40px;
+  align-items: center;
+  height: 50%;
+  width: 60%;
+  border-radius: 10px;
 }
 .deleteAccount span {
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 .second-section {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    height: 65%;
-    margin-top: 40px;
-    padding-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 65%;
+  margin-top: 40px;
+  padding-bottom: 60px;
 }
 .chartMenu {
-    width: 100vw;
-    height: 40px;
-    background: #1A1A1A;
-    color: rgba(54, 162, 235, 1);
+  width: 100vw;
+  height: 40px;
+  background: #1a1a1a;
+  color: rgba(54, 162, 235, 1);
 }
 .chartMenu p {
-    padding: 10px;
-    font-size: 20px;
+  padding: 10px;
+  font-size: 20px;
 }
 .chartBox {
-    width: 550px;
-    height: 300px;
-    padding: 20px;
-    border-radius: 20px;
-    border: solid 3px rgba(54, 162, 235, 1);
-    background: white;
-    display: flex;
-    flex-grow: 1;
+  width: 550px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid 3px rgba(54, 162, 235, 1);
+  background: white;
+  display: flex;
+  flex-grow: 1;
 }
 .settings-section {
-    width: 100%;
-    line-height: 2.5;
-    display: flex;
-    margin-top: 50px;
-    padding:40px 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  width: 100%;
+  line-height: 2.5;
+  display: flex;
+  margin-top: 50px;
+  padding: 40px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.settings, .logOut {
-    width: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
+.settings,
+.logOut {
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-.second-graph-for-price{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 40px;
-    align-items: center;
-    height: 50%;
-    width: 60%;
-    border-radius: 10px;
+.second-graph-for-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 40px;
+  align-items: center;
+  height: 50%;
+  width: 60%;
+  border-radius: 10px;
 }
 
-
-
-.bottom-nav-div{
-    position: fixed;
-    bottom: 0px;
-    width: 100vw;
-    height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #d8d2d2;
-
+.bottom-nav-div {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #d8d2d2;
 }
 
-#icons{
-    font-size: 34px;
+#icons {
+  font-size: 34px;
 }
 a {
-    color: #171717;
+  color: #171717;
 }
-
-
 
 @media only screen and (max-width: 940px) {
-    .chartBox {
-       width: 550px;
-      
-    }
-    .second-graph-for-price{
-        margin-top: 0px;
-    }
-   
-} 
+  .chartBox {
+    width: 550px;
+  }
+  .second-graph-for-price {
+    margin-top: 0px;
+  }
+}
 
 @media only screen and (max-width: 910px) {
-    .profile-container {
-        padding: 0 10px;
-    }
-    .profile-pic-div, .camera-div  {
-        width: 100px;
-        height: 100px;
-    }
-    .parent-div-saved-items-from-calculater {
-        width: 100vw;
-        border: none;
-        padding-left: 15px;
-    }
-    .right-Side-Div-for-settings-section, .second-graph-for-price {
-        width: 100vw;
-        border: none;
-        height: 35%;
-    }
-    .second-section {
-        height: 80%;
-        flex-wrap: wrap;
-    }
-    .settings-section {
-        margin-top: 30px;
-        padding-bottom: 100px;
-    }
-    body {
-        background: #ffffff;
-        
-    }
-
+  .profile-container {
+    padding: 0 10px;
+  }
+  .profile-pic-div,
+  .camera-div {
+    width: 100px;
+    height: 100px;
+  }
+  .parent-div-saved-items-from-calculater {
+    width: 100vw;
+    border: none;
+    padding-left: 15px;
+  }
+  .right-Side-Div-for-settings-section,
+  .second-graph-for-price {
+    width: 100vw;
+    border: none;
+    height: 35%;
+  }
+  .second-section {
+    height: 80%;
+    flex-wrap: wrap;
+  }
+  .settings-section {
+    margin-top: 30px;
+    padding-bottom: 100px;
+  }
+  body {
+    background: #ffffff;
+  }
 }
 @media only screen and (max-width: 590px) {
-    .chartBox {
-        width: 500px;
-        height: 300px;
-    }
-    #icons{
-        font-size: 24px;
-    
-    }
-    .second-graph-for-price{
-        margin-top: 0px;
-    }
+  .chartBox {
+    width: 500px;
+    height: 300px;
+  }
+  #icons {
+    font-size: 24px;
+  }
+  .second-graph-for-price {
+    margin-top: 0px;
+  }
 }
 
-
-
 @media only screen and (max-width: 500px) {
-    .chartBox {
-       width: 330px;
-       height: 210px;
-      
-    }
-   
-} 
-
-
+  .chartBox {
+    width: 330px;
+    height: 210px;
+  }
+}

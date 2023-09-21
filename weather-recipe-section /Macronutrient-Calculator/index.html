@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="">
+                    MacroNutrient Calculator
+                </a>
+            </div>
+        </nav>
+        <div class="container mt-3">
+            <div class="row">
+                <form id="recipe-check-form">
+                    <div class="mb-3">
+                        <label for="recipe" class="form-label">This section provides a detailed breakdown of the nutritional content of the recipe you've entered, calculated per serving. Explore the values for essential nutrients, including calories, fats, carbohydrates, protein, and various vitamins and minerals. Here are some example: 1 cup of Rice, 50 gram of Chicken, 4 sticks of Butter</label>
+                        <textarea class="form-control" id="recipe" name="recipe" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="Submit-btn">Submit Recipe</button>
+                </form>
+            </div>
+
+            <div class="loading-parent">
+                <div class="loading" >Loading...</div>
+            </div>
+
+            <div class="resultDiv" id="resultDiv">
+                <div class="firstDiv">
+                    <ul class="resultList">
+                        <li>Calories</li>
+                        <li>Sugar</li>
+                        <li>Fats</li>
+                        <li>Carbs</li>
+                        <li>Protein</li>
+                    </ul>
+                    <ul class="results">
+                        <li id="calories"></li>
+                        <li id="sugar"></li>
+                        <li id="fats"></li>
+                        <li id="carbs"></li>
+                        <li id="protein"></li>
+                    </ul>
+                </div>
+                <div class="secondDiv">
+                    <div>
+                        <ul class="sec-div-ul">
+                            <p class="secondDiv-total-fat">Total Fat</p>
+                            <li class="li-tag"><p>Saturated Fat</p> <p id="saturatedFat"></p></li>
+                            <li class="li-tag"><p>Fatty acids  </p> <p id="fattyAcids"></p></li>
+                            <li class="li-tag"><p>Sodium </p> <p id="sodium"></p></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="sec-div-ul">
+                            <p>Total Carbs</p>
+                            <li class="li-tag"><p>Zinc</p> <p id="zinc"></p></li></li>
+                            <li class="li-tag"><p>Magnesium</p> <p id="magnesium"></p></li></li>
+                            <li class="li-tag"><p>Cholesterol</p> <p id="Cholesterol"></p></li></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="sec-div-ul">
+                            <p>Total Protein</p>
+                            <li class="li-tag"><p>Vitamin D</p> <p id="vitaminD"></p></li>
+                            <li class="li-tag"><p>Calcium </p> <p id="calcium"></p></li>
+                            <li class="li-tag"><p>Iron</p> <p id="iron"></p></li>
+                            <li class="li-tag"><p>Potassium</p> <p id="potassium"></p></li>
+                        </ul>
+                    </div>
+                    
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-nav-div">
+        <div class="iconDiv">
+            <a href="/index.html"><span class="material-symbols-outlined" id="icons">home</span></a>
+        </div>
+        <div class="iconDiv">
+            <a href="/game-section/main-game-page/index.html"><span class="material-symbols-outlined" id="icons">smart_toy</span></a>
+        </div>
+        <div class="iconDiv">
+          <a href="/weather-recipe-section /main-page-w-r/index.html"><span class="material-symbols-outlined"id="icons"> weather_mix</span></a>
+      </div>
+        <div class="iconDiv">
+            <a href="/account-section/index.html"><a href="#" id="account-icon"><span class="material-symbols-outlined icons" id="icons"> person</span></a></a>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

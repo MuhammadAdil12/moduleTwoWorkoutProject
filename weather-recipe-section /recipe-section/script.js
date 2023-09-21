@@ -4,21 +4,23 @@ const container = document.querySelector(".container");
 const searchBtn = document.getElementById("search-icon");
 const IngredientBtn = document.querySelector('.view-recipe');
 const _ingredientList = document.querySelector(".ingredient-list")
-let userInput = '';
+let _userInput = document.getElementById("user-input");
 const APP_ID = '1fea24a2';
 const APP_key = '322f1191351793a5e490d5b50dc2f3f8';
+
+
+
 
 searchBtn.addEventListener('click', fetchAPI)
 async function fetchAPI(){
 
-    userInput = document.getElementById("user-input").value;
-    console.log(userInput); 
+    let userInput = _userInput.value;
 
     const baseURL = `https://api.edamam.com/search?q=${userInput}&app_id=${APP_ID}&app_key=${APP_key}&from=0&to=25`;
     const response = await fetch(baseURL); 
     const data = await response.json();
     generateHTML(data.hits)
-    console.log(data);
+
 }
 function generateHTML(result) {
     let generatedHTML= '';
@@ -62,6 +64,16 @@ function toggleIngredientListVisibility(event) {
         ingredientList.style.display = "none";
     }
 }
+
+_userInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      // code for enter
+      e.preventDefault();
+      fetchAPI()
+    }
+});
+
+
 
 // checks if the user is logged in
 document.addEventListener("DOMContentLoaded", function () {

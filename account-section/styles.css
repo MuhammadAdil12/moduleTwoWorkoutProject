@@ -1,148 +1,135 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-    background: linear-gradient(35deg, #435fecd5, #c4b8b8);
-
+  background: linear-gradient(35deg, #435fecd5, #c4b8b8);
 }
 
 .container {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
 
 .form-box {
-    width: 90%;
-    max-width: 450px;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    border-radius: 20px;
-    transform: translate(-50%, -50%);
-    background: #bcbcda;
-    padding: 50px 60px 70px;
-    text-align: center;
-
+  width: 90%;
+  max-width: 450px;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  background: #bcbcda;
+  padding: 50px 60px 70px;
+  text-align: center;
 }
 .form-box h1 {
-    font-size: 30px;
-    margin-bottom: 60px;
-    color: #3c00a0;
-    position: relative;
-
+  font-size: 30px;
+  margin-bottom: 60px;
+  color: #3c00a0;
+  position: relative;
 }
 .form-box h1::after {
-    content: "";
-    width: 30px;
-    height: 4px;
-    border-radius: 3px;
-    background: #3c00a0;
-    position: absolute;
-    bottom: -12px;
-    left: 62%;
-    transform: translateX(-50px);
+  content: "";
+  width: 30px;
+  height: 4px;
+  border-radius: 3px;
+  background: #3c00a0;
+  position: absolute;
+  bottom: -12px;
+  left: 62%;
+  transform: translateX(-50px);
 }
 .input-field {
-    background-color: #eaeaea;
-    margin: 15px 0;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    max-height: 65px;
-    transition: max-height 0.5s;
-    overflow: hidden;
+  background-color: #eaeaea;
+  margin: 15px 0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  max-height: 65px;
+  transition: max-height 0.5s;
+  overflow: hidden;
 }
 input {
-    width: 100%;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    padding: 18px 15px;
-
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 18px 15px;
 }
 input.form-control {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 input:active {
-    background: transparent;
+  background: transparent;
 }
 .input-field span {
-    margin-left: 15px;
-    color: #999;
+  margin-left: 15px;
+  color: #999;
 }
 form p {
-    text-align: left;
-    font-size: 13px;
+  text-align: left;
+  font-size: 13px;
 }
 form p a {
-    text-decoration: none;
-    color: #3c00a0;
+  text-decoration: none;
+  color: #3c00a0;
 }
 .btn-field {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .btn-field button {
-    flex-basis: 48%;
-    background: #3c00a0;
-    color: #fff;
-    height: 40px;
-    border-radius: 20px;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: background 1s;
+  flex-basis: 48%;
+  background: #3c00a0;
+  color: #fff;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: background 1s;
 }
 .afterH1Btn button {
-    width: 42%;
-    background: #3c00a0;
-    color: #fff;
-    height: 40px;
-    border-radius: 20px;
-    border: 0;
-    cursor: pointer;
-    transition: background 1s;
-
+  width: 42%;
+  background: #3c00a0;
+  color: #fff;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  cursor: pointer;
+  transition: background 1s;
 }
 .input {
-    height: 280px;
-
+  height: 280px;
 }
 .afterH1Btn button.disable {
-    background: #eaeaea;
-    color: #555;
+  background: #eaeaea;
+  color: #555;
 }
 
-
-
-.bottom-nav-div{
-    position: fixed;
-    bottom: 0px;
-    width: 100vw;
-    height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #d8d2d2;
-
+.bottom-nav-div {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #d8d2d2;
 }
 
-#icons{
-    font-size: 34px;
+#icons {
+  font-size: 34px;
 }
 a {
-    color: #171717;
+  color: #171717;
 }
-
 
 @media only screen and (max-width: 500px) {
-    #icons{
-        font-size: 24px;
-    
-    }
-
+  #icons {
+    font-size: 24px;
+  }
 }
-
