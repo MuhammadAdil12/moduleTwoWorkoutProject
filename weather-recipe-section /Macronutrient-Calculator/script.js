@@ -4,6 +4,16 @@ const fats = document.getElementById('fats');
 const carbs = document.getElementById('carbs');
 const protein = document.getElementById('protein');
 
+// For the inputs
+const nameInput = document.getElementById('nameInput')
+const caloriesInput = document.getElementById('caloriesInput')
+const priceInput = document.getElementById('priceInput')
+const fatCaloriesInput = document.getElementById('fatCaloriesInput')
+const carbsCaloriesInput = document.getElementById('carbsCaloriesInput')
+const proteinCaloriesInput = document.getElementById('proteinCaloriesInput')
+const addItemBtn = document.getElementById("addFoodItem")
+
+
 // For the second div
 // Total Fat
 const saturatedFat = document.getElementById('saturatedFat');
@@ -130,6 +140,44 @@ function resultCal(data) {
 }
 
 
+// //! adding all the information to the local Storage input by the user
+function addFoodToStorage(){
+    let _nameInput = nameInput.value
+    let _caloriesInput = caloriesInput.value
+    let _priceInput = priceInput.value
+    let _fatCaloriesInput = fatCaloriesInput.value
+    let _carbsCaloriesInput = carbsCaloriesInput.value
+    let _proteinCaloriesInput= proteinCaloriesInput.value
+
+    let x = []
+
+    x = JSON.parse(localStorage.getItem("list") || "[]");
+
+
+    z = {
+        name: _nameInput,
+        calorie: _caloriesInput,
+        price: _priceInput,
+        fat: _fatCaloriesInput,
+        carbs: _carbsCaloriesInput,
+        protein: _proteinCaloriesInput
+    }
+
+    x.push(z)
+
+    localStorage.setItem("list", JSON.stringify(x))   
+
+    nameInput.value = ""
+    calories.value = ""
+    priceInput.value = ""
+    fatCaloriesInput.value = ""
+    carbsCaloriesInput.value = ""
+    proteinCaloriesInput.value = ""
+}
+
+
+
+addItemBtn.addEventListener("click", addFoodToStorage)
 
 document.addEventListener("DOMContentLoaded", function () {
     const isAuthenticated = localStorage.getItem("isLoggedIn");

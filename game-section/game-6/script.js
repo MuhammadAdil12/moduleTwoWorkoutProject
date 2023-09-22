@@ -36,12 +36,13 @@ document.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
     // Define a mapping of keys to corresponding pad indices
     const keyIndex = {
-        'd': 0,
-        'f': 1,
-        'g': 2,
-        'h': 3,
-        'j': 4,
-        'k': 5
+        'a': 5,
+        'b': 6,
+        'c': 0,
+        'd': 1,
+        'e': 2,
+        'f': 3,
+        'g': 4
     };
     // Check if the pressed key is in the mapping
     if (keyIndex.hasOwnProperty(key)) {

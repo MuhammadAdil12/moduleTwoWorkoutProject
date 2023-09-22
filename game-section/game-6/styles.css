@@ -32,7 +32,12 @@ header p{
 .pads > div{
   height: 140px;
   width: 100px;
+  display: flex;
   flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  font-size: 25px;
 }
 
 .pad1{
@@ -52,6 +57,9 @@ header p{
 }
 .pad6{
   background: #d223d2b1;
+}
+.pad7{
+  background: firebrick;
 }
 
 #randomSoundButton {
