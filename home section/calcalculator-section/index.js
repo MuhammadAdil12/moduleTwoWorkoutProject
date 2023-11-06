@@ -7,6 +7,7 @@ const _activityLevel = document.querySelector("#activityLevelCaloriesChild")
 const _inputFatPercentage = document.getElementById("fat-input")
 const _carbsInputPercentage = document.getElementById("carbsInput")
 const _proteinInputPercentage = document.getElementById("protienInput")
+const waterIntakeResult = document.getElementById('waterIntakeResult')
 
 
 
@@ -146,9 +147,9 @@ function weightLoss(value){
     document.getElementById("weight-loss").textContent = "Wl: 0.5 kg per week take: " + _weightLoss + " kcal";
 }
 
+let waterIntake = 1;
 function calculateWaterIntake() {
     
-        let waterIntake = 1;
 
         if (_activityLevel.value == 1) {
              waterIntake = _weight.value * 35
@@ -157,14 +158,15 @@ function calculateWaterIntake() {
             waterIntake = _weight.value * 40;
         } 
         else if (_activityLevel.value == 3) {
-             waterIntake = _weight.value * 46;
+             waterIntake = _weight.value * 43;
         }
          else if (_activityLevel.value == 4) {
-             waterIntake = _weight.value* 51;
+             waterIntake = _weight.value* 49;
         } 
          else {
-             waterIntake = _weight.value * 55;
+             waterIntake = _weight.value * 51;
         }
+        
         
         // Display the calculated water intake
         waterIntakeResult.textContent = "Rec daily water intake: " + waterIntake + " ml";
@@ -203,16 +205,26 @@ function macroNutrient(value1) {
 function onSave(){
        
     if(_age.value == "" || _gender.value == "" || _height.value == "" || _weight.value == "" || _activityLevel.value == ""){
-        alert('Are you blind or sum? Fill in the blank, fam')
+        alert('Fill in the blank, fam')
     }else{
 
        let bmr = document.querySelector('#bmr-area')
        let bmi = document.querySelector('#bmi-area')
        let tdee = document.querySelector('#cal-tdee')
+
    
        localStorage.setItem("bmr", JSON.stringify(bmr.textContent))
        localStorage.setItem("bmi", JSON.stringify(bmi.textContent))
        localStorage.setItem("tdee", JSON.stringify(tdee.textContent))
+
+       console.log(waterIntakeResult.textContent);
+
+       const water = {
+        waterTarget: waterIntake,
+        waterConsumed: "0",
+      };
+      
+      localStorage.setItem("water", JSON.stringify(water));
 
     }
 }

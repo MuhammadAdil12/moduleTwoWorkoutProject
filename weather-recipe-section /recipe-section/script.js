@@ -15,11 +15,17 @@ searchBtn.addEventListener('click', fetchAPI)
 async function fetchAPI(){
 
     let userInput = _userInput.value;
+    try{
+        const baseURL = `https://api.edamam.com/search?q=${userInput}&app_id=${APP_ID}&app_key=${APP_key}&from=0&to=25`;
+        const response = await fetch(baseURL); 
+        const data = await response.json();
+        generateHTML(data.hits)
 
-    const baseURL = `https://api.edamam.com/search?q=${userInput}&app_id=${APP_ID}&app_key=${APP_key}&from=0&to=25`;
-    const response = await fetch(baseURL); 
-    const data = await response.json();
-    generateHTML(data.hits)
+    }catch(error){
+        console.log(error);
+    }
+
+  
 
 }
 function generateHTML(result) {

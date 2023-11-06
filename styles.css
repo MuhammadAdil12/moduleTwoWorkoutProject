@@ -7,14 +7,35 @@ html{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
+
+.logo-entry{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+}
+.logo-entry h1{
+  font-size: 40px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 50px;
+}
+.logo-img{
+  width: 200px;
+  border-width: 0px;
+}
 section {
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 0;
     background:linear-gradient(180deg, #435fecd5, #c4b8b8);  
+    padding-bottom: 100px;
 }
 .container{
     width: 90%;
@@ -24,19 +45,77 @@ section {
     padding: 20px;
     margin-top:-120px ;
 }
+
+.display-div{
+  width: 100vw;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.display-div-nav{
+  background-color: #2a2a2a;
+  height: 60px;
+  display: flex;
+  justify-content: end;
+}
+#book-icon, #water-icon {
+  font-size: 34px;
+  padding: 10px;
+  padding-right: 20px;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.motivational-quote-div{
+  margin-top: 30px ;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.MotivationalQuote{
+  width: 50%;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+
+.first-row{
+  width: 100vw;
+  height: 300px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.second-row{
+  width: 100vw;
+  height: 300px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-item::-webkit-scrollbar {
+  display: none;
+}
+
 .result-item{
-    margin-top: 50px;
     width: 100%;
-    display: grid;
-    grid-gap: 25px;
-    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    overflow-y: scroll;
 }
 .item{
-    width: 100%;
+    width: 300px;
+    margin: 20px;
     border-radius: 8px;
     background-color: rgb(255, 255, 255);
-    padding: 15px;
-    overflow: hidden;
     height: 300px;
     display: flex;
     justify-content: center;
@@ -94,7 +173,79 @@ a {
   font-size: 34px;
 }
 a {
-  color: #171717;
+  color: #000000;
+}
+
+.water-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  padding: 20px;
+  font-size: 20px;
+  color: white;
+}
+
+.main-div-water {
+  width: 30%;
+  height: auto; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.79);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 5px; 
+}
+.main-div h1 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.water-target-div, .water-consumed-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  text-align: center; 
+}
+.water-target-div{
+  margin-bottom: 25px;
+
+}
+.water-target-div input, .water-consumed-div input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.water-target-div button, .water-consumed-div button {
+  padding: 10px 20px;
+  background-color: #333;
+  width: 100px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.water-target-div button:hover, .water-consumed-div button:hover {
+  background-color: #0c0e0f;
+}
+.icons-close-reset {
+  display: flex; 
+  justify-content: space-between;
+  margin-bottom:1.5rem;
+}
+#close-icon, #reset-icon{
+  cursor: pointer;
 }
 
 @media (max-width: 768px){
@@ -102,6 +253,13 @@ a {
       grid-gap:10px
     }
     
+    .MotivationalQuote{
+      width: 90%;
+    }
+
+    .main-div-water{
+      width: 50%; 
+    }
    
 }
 @media only screen and (max-width: 500px) {
@@ -109,5 +267,16 @@ a {
       font-size: 24px;
   
   }
+  .motivational-quote-div{
+    margin-top: 20px ;
+  }
+  .water-target-div button, .water-consumed-div button {
+    width: 90%;
+  }
+
+  .main-div-water{
+    width: 70%; 
+  }
+  
 
 }

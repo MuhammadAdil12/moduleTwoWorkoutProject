@@ -258,6 +258,11 @@ a {
     color: #171717;
 }
 
+.back-arrow{
+    position: absolute;
+    padding: 20px;
+  }
+
 
 @media only screen and (max-width: 500px) {
     .side-icons, .icons{

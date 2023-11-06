@@ -5,6 +5,7 @@ const carbs = document.getElementById('carbs');
 const protein = document.getElementById('protein');
 
 // For the inputs
+const inputParent = document.querySelector(".input-parent")
 const nameInput = document.getElementById('nameInput')
 const caloriesInput = document.getElementById('caloriesInput')
 const priceInput = document.getElementById('priceInput')
@@ -12,6 +13,8 @@ const fatCaloriesInput = document.getElementById('fatCaloriesInput')
 const carbsCaloriesInput = document.getElementById('carbsCaloriesInput')
 const proteinCaloriesInput = document.getElementById('proteinCaloriesInput')
 const addItemBtn = document.getElementById("addFoodItem")
+
+inputParent.style.display = "none"
 
 
 // For the second div
@@ -47,25 +50,24 @@ async function fetchData(){
         text.style.display = 'block'; 
     }
 
-
     let ingr = userInput.value.split("\n")
 
-const url = `https://edamam-edamam-nutrition-analysis.p.rapidapi.com/api/nutrition-data?ingr=${ingr}`;
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'da01c69a8bmsh877f5d31ff3d196p18084fjsn1e94218f016f',
-		'X-RapidAPI-Host': 'edamam-edamam-nutrition-analysis.p.rapidapi.com'
-	}
-};
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.json();
-    resultCal(result)
-} catch (error) {
-	console.error(error);
-}
+        const appId = '8fb5c9e2';
+        const appKey = '5a73e957d1f689dec56b9f2d01c9407f';
+        const foodItem = ingr; 
+
+    try{
+
+        const response = await fetch(`https://api.edamam.com/api/nutrition-data?app_id=${appId}&app_key=${appKey}&ingr=${foodItem}`)
+        const result = await response.json()
+        resultCal(result)
+                
+    }catch(error){
+        console.error('Error:', error);
+        text.textContent = "Not able to fetch data from database";
+
+    };
 
 }
 
@@ -133,6 +135,8 @@ function resultCal(data) {
 
     resultDiv.style.display = 'block';
     secondDiv.style.display = "block"
+    inputParent.style.display = "grid"
+
 
     }
     text.style.display = 'none'
@@ -168,11 +172,12 @@ function addFoodToStorage(){
     localStorage.setItem("list", JSON.stringify(x))   
 
     nameInput.value = ""
-    calories.value = ""
+    caloriesInput.value = ""
     priceInput.value = ""
     fatCaloriesInput.value = ""
     carbsCaloriesInput.value = ""
     proteinCaloriesInput.value = ""
+
 }
 
 
