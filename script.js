@@ -25,11 +25,11 @@ async function fetchMotivationalQuote() {
     logoEntry.style.display = "none";
     mainSection.style.display = "block";
 
-    },2000)
+    },1000)
 
   }
 
-// document.addEventListener("DOMContentLoaded", fetchMotivationalQuote)
+document.addEventListener("DOMContentLoaded", fetchMotivationalQuote)
 
 
 waterIcon.addEventListener("click", function () {
