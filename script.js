@@ -50,22 +50,33 @@ function saveWaterAndReload(inputType) {
   const waterConsumedInput = document.getElementById("waterConsumedInput");
 
   const storedWater = JSON.parse(localStorage.getItem("water")) || {
-    waterTarget: '0', 
-    waterConsumed: '0', 
+    waterTarget: "0", 
+    waterConsumed: "0", 
   };
+console.log(storedWater);
+  let x = Number(storedWater.waterConsumed) + Number(waterConsumedInput.value)
 
   if (inputType === 'waterTarget') {
     storedWater.waterTarget = waterTargetInput.value;
   } else if (inputType === 'waterConsumed') {
-    storedWater.waterConsumed = waterConsumedInput.value;
+    storedWater.waterConsumed = x;
   }
 
+  if(storedWater.waterConsumed > storedWater.waterTarget){
+        alert("Congrats you have reached your water Target limit")
+  }
+
+
+  
   localStorage.setItem("water", JSON.stringify(storedWater));
 
   location.reload();
+
 }
 document.getElementById("saveWaterTarget").addEventListener("click", () => saveWaterAndReload('waterTarget'));
 document.getElementById("saveWaterConsumed").addEventListener("click", () => saveWaterAndReload('waterConsumed'));
+
+
 
 
 // ! ===== Reset the value in local storage ========== !
@@ -79,7 +90,7 @@ reset.addEventListener('click', () => {
   const waterData = localStorage.getItem("water");
   if (waterData) {
   const water = JSON.parse(waterData);
-  waterInfo.innerHTML = `${water.waterConsumed} / ${water.waterTarget}`; 
+  waterInfo.innerHTML = `${water.waterConsumed} / ${water.waterTarget} ML`; 
 } else {
   
   waterInfo.innerHTML = "Save your water first, Damn it"; 
