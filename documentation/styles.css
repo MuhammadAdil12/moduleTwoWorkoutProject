@@ -1,4 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#back-arrow{
+    padding: 15px;
+  }
+
+.main-section{
+    /* display: none; */
+    padding: 10px;
+    text-align: center;
+}
+
 .hero{
     color: red;
     font-family: cursive;
 }
+
+.logo-entry{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+  }
+  .logo-entry h1{
+    font-size: 40px;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+  }
+  .logo-img{
+    width: 200px;
+    border-width: 0px;
+  }
