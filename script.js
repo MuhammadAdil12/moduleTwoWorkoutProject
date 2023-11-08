@@ -70,8 +70,6 @@ function saveWaterAndReload(inputType) {
         }, 2000);
       }
 
-      gifDiv.style.zIndex = "1000";
-      
       
         localStorage.setItem("water", JSON.stringify(storedWater));
         if(storedWater.waterConsumed < storedWater.waterTarget){

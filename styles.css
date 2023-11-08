@@ -226,15 +226,10 @@ a {
 }
 
 .gif-div{
-  /* width: 100vw;
-  height: 100vh; */
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: start;
 }
 
 #gif-itself{
@@ -244,6 +239,7 @@ a {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   display: none;
+  cursor: none;
 }
 
 
