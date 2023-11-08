@@ -65,6 +65,7 @@ function saveWaterAndReload(inputType) {
       setTimeout(() => {
           gif.style.display = "none";
           gifDiv.style.zIndex = "-10";
+          gif.style.zIndex = "-10";
           location.reload();
         }, 2000);
       }
