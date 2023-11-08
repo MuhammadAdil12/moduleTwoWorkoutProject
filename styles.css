@@ -225,6 +225,22 @@ a {
   cursor: pointer;
 }
 
+.gif-div{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+#gif-itself{
+  position: absolute;
+  border-radius: 50%;
+  display: none;
+}
+
+
 @media (max-width: 768px){
     .search-result{
       grid-gap:10px

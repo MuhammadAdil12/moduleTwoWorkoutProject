@@ -10,7 +10,7 @@ function logoEntryFunction() {
     logoEntry.style.display = "none";
     mainSection.style.display = "block";
 
-    },1000)
+    },2000)
 
   }
 

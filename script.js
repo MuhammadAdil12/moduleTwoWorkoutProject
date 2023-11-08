@@ -6,6 +6,7 @@ const waterIconContent = document.getElementById("waterIconContent");
 const reset = document.querySelector("#reset-icon")
 const closeIcon = document.querySelector("#close-icon")
 const waterInfo = document.querySelector(".water-info")
+const gifDiv = document.querySelector(".gif-div")
 
 
 async function fetchMotivationalQuote() {
@@ -16,14 +17,6 @@ async function fetchMotivationalQuote() {
     }catch(error){
         console.log(error);
     }
-
-    logoEntry.style.display = "flex";
-    mainSection.style.display = "none";
-    setTimeout(()=> {
-    logoEntry.style.display = "none";
-    mainSection.style.display = "block";
-
-    },1000)
 
   }
 
@@ -46,6 +39,7 @@ closeIcon.addEventListener("click", function () {
 function saveWaterAndReload(inputType) {
   const waterTargetInput = document.getElementById("waterTargetInput");
   const waterConsumedInput = document.getElementById("waterConsumedInput");
+  const gif = document.getElementById("gif-itself")
 
   const storedWater = JSON.parse(localStorage.getItem("water")) || {
     waterTarget: "0", 
@@ -60,15 +54,23 @@ console.log(storedWater);
     storedWater.waterConsumed = x;
   }
 
-  if(storedWater.waterConsumed > storedWater.waterTarget){
-        alert("Congrats you have reached your water Target limit")
+  if (storedWater.waterConsumed >= storedWater.waterTarget) {
+    gifDiv.style.zIndex = "1000";
+    gif.style.display = "block";
+    
+    setTimeout(()=>{
+      alert("Congrats, you have reached your water target limit");
+    },1000)
+    setTimeout(() => {
+      gif.style.display = "none";
+      location.reload();
+      gifDiv.style.zIndex = "1";
+    }, 2000);
   }
-
 
   
   localStorage.setItem("water", JSON.stringify(storedWater));
 
-  location.reload();
 
 }
 document.getElementById("saveWaterTarget").addEventListener("click", () => saveWaterAndReload('waterTarget'));
@@ -91,7 +93,7 @@ reset.addEventListener('click', () => {
   waterInfo.innerHTML = `${water.waterConsumed} / ${water.waterTarget} ML`; 
 } else {
   
-  waterInfo.innerHTML = "Save your water first, Damn it"; 
+  waterInfo.innerHTML = "Please save your target water amount first"; 
 }
 
 
