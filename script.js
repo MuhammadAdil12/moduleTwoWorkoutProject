@@ -7,7 +7,7 @@ const reset = document.querySelector("#reset-icon")
 const closeIcon = document.querySelector("#close-icon")
 const waterInfo = document.querySelector(".water-info")
 const gifDiv = document.querySelector(".gif-div")
-
+const gif = document.getElementById("gif-itself")
 
 async function fetchMotivationalQuote() {
     try{
@@ -39,13 +39,11 @@ closeIcon.addEventListener("click", function () {
 function saveWaterAndReload(inputType) {
   const waterTargetInput = document.getElementById("waterTargetInput");
   const waterConsumedInput = document.getElementById("waterConsumedInput");
-  const gif = document.getElementById("gif-itself")
 
   const storedWater = JSON.parse(localStorage.getItem("water")) || {
     waterTarget: "0", 
     waterConsumed: "0", 
   };
-console.log(storedWater);
   let x = Number(storedWater.waterConsumed) + Number(waterConsumedInput.value)
 
   if (inputType === 'waterTarget') {
@@ -54,25 +52,33 @@ console.log(storedWater);
     storedWater.waterConsumed = x;
   }
 
+
+  
   if (storedWater.waterConsumed >= storedWater.waterTarget) {
+
     gifDiv.style.zIndex = "1000";
     gif.style.display = "block";
     
     setTimeout(()=>{
-      alert("Congrats, you have reached your water target limit");
-    },1000)
-    setTimeout(() => {
-      gif.style.display = "none";
-      location.reload();
-      gifDiv.style.zIndex = "1";
-    }, 2000);
-  }
+        alert("Congrats, you have reached your water target limit");
+      },1000)
+      setTimeout(() => {
+          gif.style.display = "none";
+          gifDiv.style.zIndex = "1";
+          location.reload();
+        }, 2000);
+      }
 
-  
-  localStorage.setItem("water", JSON.stringify(storedWater));
-
+      gifDiv.style.zIndex = "1000";
+      
+      
+        localStorage.setItem("water", JSON.stringify(storedWater));
+        if(storedWater.waterConsumed < storedWater.waterTarget){
+          location.reload();
+        }
 
 }
+
 document.getElementById("saveWaterTarget").addEventListener("click", () => saveWaterAndReload('waterTarget'));
 document.getElementById("saveWaterConsumed").addEventListener("click", () => saveWaterAndReload('waterConsumed'));
 
